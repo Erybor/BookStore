@@ -1,0 +1,127 @@
+package dao;
+
+import model.User;
+import util.Hasher;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class UserDAO {
+    private Connection connection;
+
+    public UserDAO(Connection connection) {
+        this.connection = connection;
+    }
+
+    public void addUser(User user) {
+        try {
+            String sql = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, user.getUsername());
+            statement.setString(2, Hasher.generateHash(user.getPassword()));
+            statement.setString(3, user.getEmail());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addUser(String username, String password, String email) {
+        try {
+            String sql = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, username);
+            statement.setString(2, Hasher.generateHash(password));
+            statement.setString(3, email);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+    }
+
+    // Retrieve a user by username
+    public User getUser(String username) {
+        try {
+            String sql = "SELECT * FROM users WHERE username = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, username);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                User user = extractUserFromResultSet(resultSet);
+                System.out.println(user);
+                return extractUserFromResultSet(resultSet);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public User getUserByID(String userID){
+        try {
+            String sql = "SELECT * FROM users WHERE user_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, userID);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                User user = extractUserFromResultSet(resultSet);
+                System.out.println(user);
+                return user;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<User> getAllUsers() throws SQLException {
+        try {
+            String sql = "SELECT * FROM users";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            List<User> users = new ArrayList<>();
+            while (resultSet.next()) {
+                User user = extractUserFromResultSet(resultSet);
+                users.add(user);
+            }
+            return users;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
+    }
+
+    public int getUserFollowers(int userID) throws SQLException {
+        try {
+            String sql = "SELECT u.* FROM users u INNER JOIN followers f ON u.user_id = f.follower_id WHERE f.following_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, userID);
+            ResultSet resultSet = statement.executeQuery();
+            List<User> followers = new ArrayList<>();
+            while (resultSet.next()) {
+                User follower = extractUserFromResultSet(resultSet);
+                followers.add(follower);
+            }
+            return followers.size();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    private User extractUserFromResultSet(ResultSet resultSet) throws SQLException {
+        User user = new User();
+        user.setUserId(resultSet.getInt("user_id"));
+        user.setUsername(resultSet.getString("username"));
+        user.setPassword(resultSet.getString("password"));
+        user.setEmail(resultSet.getString("email"));
+        return user;
+    }
+}

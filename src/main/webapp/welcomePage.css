@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f8e192;
+
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.92);
+}
+
+.topnav a {
+    float: left;
+    color: #f8e192;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: Inter;
+}
+
+.topnav a:hover {
+    /*background-color;*/
+    color: #ffe151;
+}
+
+.test {
+    max-width: 1200px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+    display: flex;
+
+    /*justify-content: space-between;*/
+}
+
+.left_nav {
+    display: flex;
+    gap: 30px;
+}
+
+.middle_nav {
+    margin: 0 auto;
+}
+
+.right_nav {
+    margin-left: auto;
+
+}
+
+.content {
+    padding: 16px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 10rem;
+    display: flex;
+    height: 100vh;
+    gap: 8rem;
+}
+
+.left-div, .right-div {
+    margin: 0;
+}
+
+.left-div {
+    margin-top: 2rem;
+    flex-basis: 50%;
+}
+
+.join_click {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 165px;
+    height: 57px;
+    /*background: #FB8C77;*/
+    background: #CAA38E;
+    border-radius: 83px;
+    color: #000000;
+    font-size: 18px;
+    font-family: Outfit;
+    font-weight: 1000;
+    text-transform: uppercase;
+    text-decoration: none;
+
+}
+
+.join_click:hover {
+    background-color: #ff9f8a;
+}
+
+.right-div {
+    flex-basis: 50%;
+}

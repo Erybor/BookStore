@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f8e192;
+    color: #f8e192;
+}
+
+.main_content {
+    background-color: #476754;
+    max-width: 1200px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+    height: 100vh;
+    margin-top: 6rem;
+    display: flex;
+}
+
+.genres {
+    gap: 30px;
+    margin: 0 auto;
+}
+
+.genre_div {
+    color: #476754 !important;
+}
+
+.left_div, .right_div {
+    /*margin: 0;*/
+    margin-top: 2rem;
+}
+
+.left_div {
+    /*margin-top: 2rem;*/
+    flex-basis: 50%;
+    /*justify-content: space-between;*/
+}
+
+/*.left_div.h1 {*/
+/*    color: red !important;*/
+/*}*/
+
+.book_cover {
+    margin-bottom: 10px; /* Add a bottom margin to create spacing between book covers */
+}
+
+
+.cover_row {
+    display: flex; /* Apply flexbox layout */
+    justify-content: flex-start; /* Align items from the start */
+    gap: 1rem; /* Adjust the gap between items */
+}
+
+.entered-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.entered-genres span {
+    padding: 5px 10px;
+    background-color: #f8e192;
+    border-radius: 5px;
+}
+
+.genreOption {
+    display: inline-block;
+    padding: 8px 16px;
+    /*margin: 4px;*/
+    font-size: 14px;
+    background-color: #f8e192;
+    border: 1px solid #f8e192;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #476754 !important;
+}
+
+.genreOption:hover {
+    background-color: #e0e0e0;
+}
+
+.selectedGenre {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* NAVIGATION BAR CSS: */
+
+.topnav {
+    overflow: hidden;
+    background-color: #476754;
+}
+
+.topnav a {
+    float: left;
+    color: #f8e192;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: Inter;
+}
+
+.test {
+    max-width: 1200px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+    display: flex;
+    /*justify-content: space-between;*/
+}
+
+.left_nav {
+    display: flex;
+    /*gap: 30px;*/
+}
+
+.middle_nav {
+    /*margin: 0 auto;*/
+    margin-left: 5rem;
+}
+
+.right_nav {
+    margin-left: auto;
+
+}
+

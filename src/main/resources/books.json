@@ -1,0 +1,249 @@
+[
+  {
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "description": "Pride and Prejudice is a romantic novel by Jane Austen, first published in 1813. The story charts the emotional development of the protagonist, Elizabeth Bennet, who learns the error of making hasty judgments and comes to appreciate the difference between the superficial and the essential.",
+    "rating": 0,
+    "genres": [
+      "Romance",
+      "Classics"
+    ],
+    "year": 1813
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "description": "To Kill a Mockingbird is a novel by Harper Lee published in 1960. It explores the irrationality of adult attitudes toward race and class in the Deep South of the 1930s through the eyes of six-year-old Scout Finch.",
+    "rating": 0,
+    "genres": [
+      "Classics"
+    ],
+    "year": 1960
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "description": "1984 is a dystopian novel by George Orwell published in 1949. It depicts a totalitarian regime where critical thought is suppressed under the constant surveillance of the ruling party.",
+    "rating": 0,
+    "genres": [
+      "Science Fiction",
+      "Classics"
+    ],
+    "year": 1949
+  },
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "description": "The Great Gatsby is a novel by F. Scott Fitzgerald published in 1925. Set in the Jazz Age, it explores themes of decadence, idealism, and the American Dream through the story of Jay Gatsby and his obsession with Daisy Buchanan.",
+    "rating": 0,
+    "genres": [
+      "Classics"
+    ],
+    "year": 1925
+  },
+  {
+    "title": "The Lord of the Rings",
+    "author": "J.R.R. Tolkien",
+    "description": "The Lord of the Rings is an epic high-fantasy novel by J.R.R. Tolkien published between 1954 and 1955. It follows the journey of Frodo Baggins as he and the Fellowship embark on a quest to destroy the One Ring and defeat the Dark Lord Sauron.",
+    "rating": 0,
+    "genres": [
+      "Fantasy",
+      "Classics"
+    ],
+    "year": 1954
+  },
+  {
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "description": "The Alchemist is a novel by Paulo Coelho published in 1988. It tells the story of a young Andalusian shepherd named Santiago who sets out on a journey to find his personal legend.",
+    "rating": 0,
+    "genres": [
+      "Fiction",
+      "Classics"
+    ],
+    "year": 1988
+  },
+  {
+    "title": "The Da Vinci Code",
+    "author": "Dan Brown",
+    "description": "The Da Vinci Code is a mystery thriller novel by Dan Brown published in 2003. It follows symbologist Robert Langdon as he investigates a murder at the Louvre Museum and unravels a series of clues related to the works of Leonardo da Vinci.",
+    "rating": 0,
+    "genres": [
+      "Mystery",
+      "Classics"
+    ],
+    "year": 2003
+  },
+  {
+    "title": "Harry Potter and the Philosopher's Stone",
+    "author": "J.K. Rowling",
+    "description": "Harry Potter and the Philosopher's Stone is the first book in the Harry Potter series by J.K. Rowling published in 1997. It introduces the young wizard Harry Potter and his journey as he discovers his magical abilities and attends Hogwarts School of Witchcraft and Wizardry.",
+    "rating": 0,
+    "genres": [
+      "Fantasy",
+      "Young Adult"
+    ],
+    "year": 1997
+  },
+  {
+    "title": "The Chronicles of Narnia: The Lion, the Witch, and the Wardrobe",
+    "author": "C.S. Lewis",
+    "description": "The Lion, the Witch, and the Wardrobe is a fantasy novel by C.S. Lewis published in 1950. It is the first book in The Chronicles of Narnia series and tells the story of four siblings who enter the magical world of Narnia through a wardrobe and become involved in a battle against the White Witch.",
+    "rating": 0,
+    "genres": [
+      "Fantasy",
+      "Classics"
+    ],
+    "year": 1950
+  },
+  {
+    "title": "The Name of the Wind",
+    "author": "Patrick Rothfuss",
+    "description": "The Name of the Wind is a fantasy novel by Patrick Rothfuss published in 2007. It follows the life of Kvothe, an adventurer and musician, as he recounts his journey to becoming a powerful wizard and hero.",
+    "rating": 0,
+    "genres": [
+      "Fantasy"
+    ],
+    "year": 2007
+  },
+  {
+    "title": "The Book Thief",
+    "author": "Markus Zusak",
+    "description": "The Book Thief is a historical novel by Markus Zusak published in 2005. Set in Nazi Germany, it tells the story of Liesel Meminger, a young girl who steals books to share with others and finds solace during difficult times.",
+    "rating": 0,
+    "genres": [
+      "Historical Fiction"
+    ],
+    "year": 2005
+  },
+  {
+    "title": "The Handmaid's Tale",
+    "author": "Margaret Atwood",
+    "description": "The Handmaid's Tale is a dystopian novel by Margaret Atwood published in 1985. It envisions a future totalitarian society in which women are subjugated and used for reproductive purposes.",
+    "rating": 0,
+    "genres": [
+      "Dystopian",
+      "Science Fiction"
+    ],
+    "year": 1985
+  },
+  {
+    "title": "The Night Circus",
+    "author": "Erin Morgenstern",
+    "description": "The Night Circus is a fantasy novel by Erin Morgenstern published in 2011. It tells the tale of a mysterious circus that arrives without warning and is open only at night, featuring two young magicians pitted against each other in a duel of magic and love.",
+    "rating": 0,
+    "genres": [
+      "Fantasy"
+    ],
+    "year": 2011
+  },
+  {
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "description": "Brave New World is a dystopian novel by Aldous Huxley published in 1932. It presents a futuristic world where human life is highly controlled and people are engineered for specific roles in society.",
+    "rating": 0,
+    "genres": [
+      "Dystopian",
+      "Science Fiction",
+      "Classics"
+    ],
+    "year": 1932
+  },
+  {
+    "title": "The Picture of Dorian Gray",
+    "author": "Oscar Wilde",
+    "description": "The Picture of Dorian Gray is a philosophical novel by Oscar Wilde published in 1890. It tells the story of a young man, Dorian Gray, who wishes for eternal youth and beauty, leading to a Faustian bargain.",
+    "rating": 0,
+    "genres": [
+      "Classics",
+      "Gothic"
+    ],
+    "year": 1890
+  },
+  {
+    "title": "Neuromancer",
+    "author": "William Gibson",
+    "description": "Neuromancer is a science fiction novel by William Gibson published in 1984. It is one of the pioneering works in the cyberpunk genre, exploring themes of artificial intelligence, virtual reality, and hacking.",
+    "rating": 0,
+    "genres": [
+      "Science Fiction",
+      "Cyberpunk"
+    ],
+    "year": 1984
+  },
+  {
+    "title": "The Road",
+    "author": "Cormac McCarthy",
+    "description": "The Road is a post-apocalyptic novel by Cormac McCarthy published in 2006. It follows a father and son as they journey across a desolate and dangerous wasteland in search of a better life.",
+    "rating": 0,
+    "genres": [
+      "Post-Apocalyptic"
+    ],
+    "year": 2006
+  },
+  {
+    "title": "The Name of the Rose",
+    "author": "Umberto Eco",
+    "description": "The Name of the Rose is a historical mystery novel by Umberto Eco published in 1980. Set in an Italian monastery in the 14th century, it follows the Franciscan friar William of Baskerville as he investigates a series of mysterious deaths.",
+    "rating": 0,
+    "genres": [
+      "Historical Fiction",
+      "Mystery"
+    ],
+    "year": 1980
+  },
+  {
+    "title": "American Gods",
+    "author": "Neil Gaiman",
+    "description": "American Gods is a fantasy novel by Neil Gaiman published in 2001. It tells the story of Shadow Moon, an ex-convict who becomes embroiled in a conflict between the old gods and the new gods of America.",
+    "rating": 0,
+    "genres": [
+      "Fantasy",
+      "Mythology"
+    ],
+    "year": 2001
+  },
+  {
+    "title": "The Kite Runner",
+    "author": "Khaled Hosseini",
+    "description": "The Kite Runner is a historical drama novel by Khaled Hosseini published in 2003. It follows the story of Amir, a young boy from Kabul, and his lifelong journey to seek redemption and make amends for past mistakes.",
+    "rating": 0,
+    "genres": [
+      "Historical Fiction",
+      "Drama"
+    ],
+    "year": 2003
+  },
+  {
+    "title": "The Shadow of the Wind",
+    "author": "Carlos Ruiz Zafón",
+    "description": "The Shadow of the Wind is a historical thriller novel by Carlos Ruiz Zafón published in 2001. It revolves around a young boy named Daniel who discovers a mysterious book and sets out to uncover the author's past.",
+    "rating": 0,
+    "genres": [
+      "Historical Fiction",
+      "Mystery"
+    ],
+    "year": 2001
+  },
+  {
+    "title": "Mistborn: The Final Empire",
+    "author": "Brandon Sanderson",
+    "description": "Mistborn: The Final Empire is a fantasy novel by Brandon Sanderson published in 2006. It is the first book in the Mistborn series, set in a world where certain individuals, known as Mistings or Mistborn, gain magical abilities through consuming and burning metals.",
+    "rating": 0,
+    "genres": [
+      "Fantasy"
+    ],
+    "year": 2006
+  },
+  {
+    "title": "Blindness",
+    "author": "José Saramago",
+    "description": "Blindness is a dystopian novel by José Saramago published in 1995. It depicts a society struck by an epidemic of sudden blindness and explores the breakdown of social order and morality.",
+    "rating": 0,
+    "genres": [
+      "Dystopian",
+      "Literary Fiction"
+    ],
+    "year": 1995
+  }
+]
