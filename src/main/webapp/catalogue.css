@@ -12,6 +12,11 @@ body {
     height: 100vh;
     margin-top: 6rem;
     display: flex;
+    gap: 1rem;
+    padding: 1rem 16px;
+    box-sizing: border-box;
+    width: 70%;
+    /*justify-content: space-between;*/
 }
 
 .genres {
@@ -21,6 +26,11 @@ body {
 
 .genre_div {
     color: #476754 !important;
+
+}
+
+.cover_row {
+    margin-top: 0.7rem;
 }
 
 .left_div, .right_div {
@@ -30,13 +40,10 @@ body {
 
 .left_div {
     /*margin-top: 2rem;*/
-    flex-basis: 50%;
+    flex-basis: 55%;
+    flex-shrink: 0;
     /*justify-content: space-between;*/
 }
-
-/*.left_div.h1 {*/
-/*    color: red !important;*/
-/*}*/
 
 .book_cover {
     margin-bottom: 10px; /* Add a bottom margin to create spacing between book covers */
@@ -47,6 +54,7 @@ body {
     display: flex; /* Apply flexbox layout */
     justify-content: flex-start; /* Align items from the start */
     gap: 1rem; /* Adjust the gap between items */
+    flex-wrap: wrap;
 }
 
 .entered-genres {
@@ -59,6 +67,10 @@ body {
     padding: 5px 10px;
     background-color: #f8e192;
     border-radius: 5px;
+}
+
+#genreOptions {
+    margin-bottom: 2rem;
 }
 
 .genreOption {
@@ -104,6 +116,7 @@ body {
     margin: 0 auto; /* Center the container horizontally */
     display: flex;
     /*justify-content: space-between;*/
+
 }
 
 .left_nav {
