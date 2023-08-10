@@ -23,8 +23,7 @@ public class LoginValidator implements Validator {
         this.errors = new ArrayList<>();
 
     }
-
-
+    
     @Override
     public boolean validate() {
 

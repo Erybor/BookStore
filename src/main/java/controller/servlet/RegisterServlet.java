@@ -60,12 +60,14 @@ public class RegisterServlet extends HttpServlet {
         User user = new User(username, password, email);
 
 //        userDAO.addUser(username, password, email)
+//        userDAO.addUser(user);
+        int generatedUserId = userDAO.addUser(user);
 
-        userDAO.addUser(user);
+        req.getSession().setAttribute("userId", generatedUserId);
+        req.getSession().setAttribute("username", user.getUsername());
 
-        req.getSession().setAttribute("userId", user.getId());
 
-        req.getRequestDispatcher("homepage.jsp").forward(req, resp);
+        resp.sendRedirect("/homepage");
 
     }
 }

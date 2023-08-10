@@ -26,7 +26,11 @@ public class LoginPasswordValidator implements Validator {
         User user = null;
         user = userDAO.getUser(userName);
         String passwordHashed = Hasher.generateHash(password);
-        String userPasswordHashed = Hasher.generateHash(user.getPassword());
+        String userPasswordHashed = user.getPassword();
+
+        System.out.println("PASSWORD HASHED:" + passwordHashed);
+        System.out.println("userPassword HASHED:" + userPasswordHashed);
+
         if (userPasswordHashed.equals(passwordHashed)) {
             return true;
         }
