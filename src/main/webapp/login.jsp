@@ -6,7 +6,7 @@
 <head>
     <title>Log in</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="register.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/register.css">
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
@@ -35,7 +35,7 @@
 
             <button type="submit">Log in</button>
 
-            <p>Don't have an account? <a href="register.jsp">Register here</a></p>
+            <p>Don't have an account? <a href="${pageContext.request.contextPath}/Register">Register here</a></p>
         </div>
     </div>
 

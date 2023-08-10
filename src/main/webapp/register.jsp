@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page isELIgnored="false"%>
+<%@page isELIgnored="false" %>
 
 <html>
 <head>
@@ -9,12 +9,12 @@
     <link rel="stylesheet" type="text/css" href="register.css">
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    <%--    <link rel="stylesheet" type="text/css" href="welcomePage.css">--%>
-
+    <script src="Javascript/RegisterValidator.js"></script>
 </head>
 
+
 <body>
-<form action="RegisterServlet" method="post">
+<form action="RegisterServlet" method="post" onsubmit="return check()">
 
     <div class="register">
         <div class="register_inside_div">
@@ -26,16 +26,6 @@
                 <label for="username">Your Username</label>
                 <input id="username" type="text" name="username" class="input_box">
             </div>
-
-<%--            <div class="input_container">--%>
-<%--                <label for="firstName">Your First Name</label>--%>
-<%--                <input id="firstName" type="text" name="firstName">--%>
-<%--            </div>--%>
-
-<%--            <div class="input_container">--%>
-<%--                <label for="lastName">Your Last Name</label>--%>
-<%--                <input id="lastName" type="text" name="lastName">--%>
-<%--            </div>--%>
 
             <div class="input_container">
                 <label for="email">Your Email</label>
@@ -50,7 +40,7 @@
 
             <div class="input_container">
                 <label for="passwordRepeat">Repeat your password</label>
-                <input id="passwordRepeat" type="password" name="passwordRepeat" class="input_box">
+                <input id="passwordRepeat" type="password" name="passwordRepeat" onkeyup="checkPassword()" class="input_box">
             </div>
 
             <button type="submit">Register</button>
