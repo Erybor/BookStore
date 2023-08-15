@@ -58,8 +58,8 @@
                 <input type="hidden" name="bookId" value="${book.id}">
 
                 <div class="review_rating" >
-                    <label for="rating">Rating:</label>S
-                    <input type="number" id="rating" name="rating" min="1" max="5" value="${review.ratingValue}" reuired>
+                    <label for="rating">Rating:</label>
+                    <input type="number" id="rating" name="rating" min="1" max="5" value="${review.ratingValue}" required>
                 </div>
 
                 <div class="review_text" style="padding: 2rem 0rem; display: flex; flex-direction: column">

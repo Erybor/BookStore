@@ -24,9 +24,8 @@ public class DisplayReviewServlet extends HttpServlet {
         ReviewDAO reviewDAO = (ReviewDAO) req.getServletContext().getAttribute("reviewDAO");
         BookDAO bookDAO = (BookDAO) req.getServletContext().getAttribute("bookDAO");
 
-        int userId = Integer.parseInt(req.getParameter("userId"));
+        int userId = (int) req.getSession().getAttribute("userId");
         int bookId = Integer.parseInt(req.getParameter("bookId"));
-
 
 
         System.out.println("REVIEW ID:" + reviewId);

@@ -106,8 +106,6 @@
                     <p> You have already reviewed this book, please edit your review instead! </p>
                     <form action="/review/${reviewId}" method="get">
                         <input type="hidden" name="bookId" value="${bookId}">
-                        <input type="hidden" name="userId" value="${userId}">
-                            <%--                            <input type="hidden" name="reviewId" value="${reviewId}">--%>
                         <input type="submit" value="Edit Review">
                     </form>
 
@@ -119,7 +117,6 @@
 
         <%--        // Save user in a JSTL variable--%>
 
-
         <c:set var="userDAO" value="${applicationScope.userDAO}"/>
 
         <%--        <c:set var="user" value="${applicationScope.userDAO}"/>--%>
@@ -127,7 +124,6 @@
             <h3>Reviews</h3>
             <c:forEach var="review" items="${reviews}">
                 <c:set var="user" value="${userDAO.getUserByID(review.userId)}"/>
-                <%--                <p> USER:" ${user}</p>--%>
 
                 <div class="review-box">
                     <div class="user-info">
