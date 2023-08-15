@@ -38,7 +38,8 @@ public class AddReviewServlet extends HttpServlet {
             System.out.println("You have already reviewed this book!, please edit your review instead");
 
             req.getSession().setAttribute("reviewError", true);
-//            req.setAttribute("reviewError", true);
+            req.getSession().setAttribute("reviewId", review.getReviewId());
+//            req.setAttribute("reviewError", true);,
             resp.sendRedirect("/book/" + bookId);
 
 //            req.getRequestDispatcher("/book/" + bookId).forward(req, resp);

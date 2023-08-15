@@ -75,20 +75,33 @@ public class ReviewDAO {
     }
 
 
-    public void updateReview(int reviewId, int userId, int bookId) {
+    public void updateReview(int reviewId, String reviewText, int ratingValue) {
         try {
-            String sql = "UPDATE reviews SET user_id = ?, book_id = ? WHERE review_id = ?";
+            String sql = "UPDATE reviews SET review_text = ?, rating_value = ? WHERE review_id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, userId);
-            statement.setInt(2, bookId);
+            statement.setString(1, reviewText);
+            statement.setInt(2, ratingValue);
             statement.setInt(3, reviewId);
             statement.executeUpdate();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
 
         }
 
     }
 
+    public Review getReviewById(int reviewId) {
+        try {
+            String sql = "SELECT * FROM reviews WHERE review_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, reviewId);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return extractReviewFromResultSet(resultSet);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

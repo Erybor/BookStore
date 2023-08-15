@@ -24,22 +24,6 @@
 
 <body>
 
-
-<%--<%--%>
-<%--    BookDAO bookDAO = (BookDAO) request.getServletContext().getAttribute("bookDAO");--%>
-<%--    List<String> categories = bookDAO.getAllCategories();--%>
-<%--    HashMap<String, List<Book>> booksByCategories = new HashMap<>();--%>
-
-<%--    // Iterate through the categories and retrieve corresponding books for each category--%>
-<%--    for (String category : categories) {--%>
-<%--        List<Book> books = bookDAO.getBooksByCategory(category);--%>
-<%--        booksByCategories.put(category, books);--%>
-<%--    }--%>
-
-<%--    // Set the categories as an attribute in the request--%>
-<%--    request.setAttribute("categories", booksByCategories);--%>
-<%--%>--%>
-
 <div class="topnav">
     <div class="test">
         <div class="left_nav">
@@ -103,7 +87,7 @@
 
         <div class="add_review">
             <h3>Write a Review</h3>
-            <form action="AddReviewServlet" method="post">
+            <form action="/AddReviewServlet" method="post">
                 <input type="hidden" name="bookId" value="${bookId}">
                 <textarea name="review" rows="4" cols="50" placeholder="Write your review"></textarea>
                 <br>
@@ -111,25 +95,25 @@
                 <input type="number" id="rating" name="rating" min="1" max="5">
                 <br>
                 <input type="submit" value="Submit Review">
-
-<%--                <p> ${reviewError}</p>--%>
-                <c:if test="${reviewError}">
-                    <div class="review_error">
-                            <%--Set review error to false--%>
-                        <c:set var="reviewError" value="${false}" scope="session"/>
-
-                        <p> You have already reviewed this book, please edit your review instead! </p>
-                        <form action="EditReview" method="post">
-                            <input type="hidden" name="bookId" value="${bookId}">
-                            <input type="hidden" name="userId" value="${userId}">
-                            <input type="hidden" name="reviewId" value="${reviewId}">
-                            <input type="submit" value="Edit Review">
-                        </form>
-
-                    </div>
-                </c:if>
-
             </form>
+
+            <%--                <p> ${reviewError}</p>--%>
+            <c:if test="${reviewError}">
+                <div class="review_error">
+                        <%--Set review error to false--%>
+                    <c:set var="reviewError" value="${false}" scope="session"/>
+
+                    <p> You have already reviewed this book, please edit your review instead! </p>
+                    <form action="/review/${reviewId}" method="get">
+                        <input type="hidden" name="bookId" value="${bookId}">
+                        <input type="hidden" name="userId" value="${userId}">
+                            <%--                            <input type="hidden" name="reviewId" value="${reviewId}">--%>
+                        <input type="submit" value="Edit Review">
+                    </form>
+
+                </div>
+            </c:if>
+
         </div>
 
 
@@ -138,11 +122,7 @@
 
         <c:set var="userDAO" value="${applicationScope.userDAO}"/>
 
-        <p> USER: ${user}</p>
-
         <%--        <c:set var="user" value="${applicationScope.userDAO}"/>--%>
-
-
         <div class="book_reviews">
             <h3>Reviews</h3>
             <c:forEach var="review" items="${reviews}">
