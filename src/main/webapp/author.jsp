@@ -11,34 +11,34 @@
 <head>
     <title>Book Catalogue</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/author.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/navigation_bar.css">
 
     <%--    FONTAWESOME STYLESHEET FOR STAR--%>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 </head>
 
-<body>
 
+<body>
 <div class="topnav">
     <div class="test">
         <div class="left_nav">
             <a class="book-verse" style="font-family: Inter" style="font-weight: bold"
                href="welcomePage.jsp">BookVerse</a>
             <a class="home" href="/homepage">Home</a>
+
         </div>
 
         <div class="middle_nav">
             <a href="/catalogue">Catalogue</a>
-            <a href="#profile_page">Profile Page</a>
+            <a href="/profile">Profile Page</a>
         </div>
 
         <div class="right_nav">
-
             <a class="button" href="LogOutServlet">Log Out</a>
         </div>
 
     </div>
 </div>
-
 
 <div class="main_content">
 

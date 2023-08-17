@@ -31,7 +31,8 @@ body {
 
 .left_div {
     /*margin-top: 2rem;*/
-    flex-basis: 20%;
+    flex-basis: 22%;
+    flex-shrink: 0;
     /*justify-content: space-between;*/
 }
 
@@ -83,10 +84,15 @@ body {
     color: #fff;
 }
 
+/* Author stuff */
 
+.author_title h1 {
+    margin: 0;
+    padding: 0;
+}
 
 .author_books {
-    margin-top: 10rem;
+    margin-top: 12rem;
 }
 
 . book_link {
