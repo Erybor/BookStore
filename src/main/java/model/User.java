@@ -5,6 +5,10 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private String name;
+    private String lastName;
+    private String gender;
+    private String profilePicture; // Store the image URL or path here
 
 
     public User(String username, String password, String email) {
@@ -20,6 +24,7 @@ public class User {
         this.password = password;
         this.email = email;
     }
+
 
     public User() {
 
@@ -57,6 +62,37 @@ public class User {
         this.email = email;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
 
     @Override
     public String toString() {
@@ -65,6 +101,10 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", profilePicture='" + profilePicture + '\'' +
                 '}';
     }
 }

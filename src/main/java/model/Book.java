@@ -12,6 +12,8 @@ public class Book {
     private double rating;
     private List<String> genres;
     private int year;
+    private String coverUrl;
+    private List<Review> reviews;
 
 
     // Constructor without AuthorId
@@ -26,7 +28,7 @@ public class Book {
 //    }
 
     // Constructor with AuthorId
-    public Book(String title, String author, int authorId, String description, double rating, List<String> genres, int year) {
+    public Book(String title, String author, int authorId, String description, double rating, List<String> genres, int year, String coverUrl) {
         this.title = title;
         this.author = author;
         this.authorId = authorId;
@@ -34,10 +36,11 @@ public class Book {
         this.rating = rating;
         this.genres = genres;
         this.year = year;
+        this.coverUrl = coverUrl;
     }
 
-    public Book(int id, String title, String author, int authorId, String description, double rating, List<String> genres, int year) {
-        this(title, author, authorId, description, rating, genres, year);
+    public Book(int id, String title, String author, int authorId, String description, double rating, List<String> genres, int year, String coverUrl) {
+        this(title, author, authorId, description, rating, genres, year, coverUrl);
         this.id = id;
     }
 
@@ -111,8 +114,38 @@ public class Book {
         this.year = year;
     }
 
+    public String getCoverUrl() {
+        return coverUrl;
+    }
+
+    public void setCoverUrl(String coverUrl) {
+        this.coverUrl = coverUrl;
+    }
+
     @Override
     public boolean equals(Object obj) {
         return id == ((Book) obj).getId();
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", authorId=" + authorId +
+                ", description='" + description + '\'' +
+                ", rating=" + rating +
+                ", genres=" + genres +
+                ", year=" + year +
+                '}';
     }
 }
