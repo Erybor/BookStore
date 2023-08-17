@@ -40,7 +40,8 @@
 
             <div class="input_container">
                 <label for="passwordRepeat">Repeat your password</label>
-                <input id="passwordRepeat" type="password" name="passwordRepeat" onkeyup="checkPassword()" class="input_box">
+                <input id="passwordRepeat" type="password" name="passwordRepeat" onkeyup="checkPassword()"
+                       class="input_box">
             </div>
 
             <button type="submit">Register</button>

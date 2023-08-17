@@ -94,7 +94,9 @@
                 <label for="rating">Rating:</label>
                 <input type="number" id="rating" name="rating" min="1" max="5">
                 <br>
-                <input type="submit" value="Submit Review">
+                <div class="submit_review_button">
+                    <input type="submit" value="Submit Review">
+                </div>
             </form>
 
             <%--                <p> ${reviewError}</p>--%>

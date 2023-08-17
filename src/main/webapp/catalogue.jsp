@@ -10,7 +10,8 @@
 <html>
 <head>
     <title>Book Catalogue</title>
-    <link rel="stylesheet" type="text/css" href="catalogue.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/catalogue.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/navigation_bar.css">
 </head>
 
 <body>
@@ -41,7 +42,7 @@
 
         <div class="middle_nav">
             <a href="/catalogue">Catalogue</a>
-            <a href="#profile_page">Profile Page</a>
+            <a href="/profile">Profile Page</a>
         </div>
 
         <div class="right_nav">
@@ -57,7 +58,6 @@
         <h1 class="header">Book Catalogue</h1>
 
         <div class="genres">
-            <h2 class="header">Genres</h2>
 
             <c:forEach items="${categories}" var="category">
                 <div class="genre_div">
@@ -66,7 +66,7 @@
                         <c:forEach items="${category.value}" var="book">
                             <div class="book_cover">
                                 <a href="/book/${book.id}">
-                                    <img src="book.png" alt="${book.title}" width="115" height="180"/>
+                                    <img src="/${book.coverUrl}" alt="${book.title}" width="115" height="180"/>
                                         <%--                                                                        <p>${book.title}</p>--%>
                                 </a>
                             </div>

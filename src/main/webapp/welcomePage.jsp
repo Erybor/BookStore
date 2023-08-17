@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page isELIgnored="false" %>
-
 <html>
 
 <head>
@@ -29,8 +28,8 @@
         <%--        </div>--%>
 
         <div class="right_nav">
-            <a class="button" href="login.jsp">Log in</a>
-            <a href="register.jsp">Register</a>
+            <a class="button" href="Login">Log in</a>
+            <a href="/Register">Register</a>
         </div>
 
     </div>
