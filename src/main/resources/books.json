@@ -8,7 +8,8 @@
       "Romance",
       "Classics"
     ],
-    "year": 1813
+    "year": 1813,
+    "cover_url": "pride_and_prejudice.jpg"
   },
   {
     "title": "To Kill a Mockingbird",
@@ -18,7 +19,8 @@
     "genres": [
       "Classics"
     ],
-    "year": 1960
+    "year": 1960,
+    "cover_url": "to_kill_a_mockingbird.jpg"
   },
   {
     "title": "1984",
@@ -29,7 +31,8 @@
       "Science Fiction",
       "Classics"
     ],
-    "year": 1949
+    "year": 1949,
+    "cover_url": "1984.jpg"
   },
   {
     "title": "The Great Gatsby",
@@ -39,7 +42,8 @@
     "genres": [
       "Classics"
     ],
-    "year": 1925
+    "year": 1925,
+    "cover_url": "the_great_gatsby.jpg"
   },
   {
     "title": "The Lord of the Rings",
@@ -50,7 +54,8 @@
       "Fantasy",
       "Classics"
     ],
-    "year": 1954
+    "year": 1954,
+    "cover_url": "the_lord_of_the_rings.jpg"
   },
   {
     "title": "The Alchemist",
@@ -61,7 +66,8 @@
       "Fiction",
       "Classics"
     ],
-    "year": 1988
+    "year": 1988,
+    "cover_url": "the_alchemist.jpg"
   },
   {
     "title": "The Da Vinci Code",
@@ -72,7 +78,8 @@
       "Mystery",
       "Classics"
     ],
-    "year": 2003
+    "year": 2003,
+    "cover_url": "the_da_vinci_code.jpg"
   },
   {
     "title": "Harry Potter and the Philosopher's Stone",
@@ -83,7 +90,8 @@
       "Fantasy",
       "Young Adult"
     ],
-    "year": 1997
+    "year": 1997,
+    "cover_url": "harry_potter_and_the_philosopher's_stone.jpg"
   },
   {
     "title": "The Chronicles of Narnia: The Lion, the Witch, and the Wardrobe",
@@ -94,7 +102,9 @@
       "Fantasy",
       "Classics"
     ],
-    "year": 1950
+    "year": 1950,
+    "cover_url": "the_lion_the_witch_and_the_wardrobe.jpg"
+
   },
   {
     "title": "The Name of the Wind",
@@ -104,7 +114,8 @@
     "genres": [
       "Fantasy"
     ],
-    "year": 2007
+    "year": 2007,
+    "cover_url": "the_name_of_the_wind.jpg"
   },
   {
     "title": "The Book Thief",
@@ -114,7 +125,8 @@
     "genres": [
       "Historical Fiction"
     ],
-    "year": 2005
+    "year": 2005,
+    "cover_url": "the_book_thief.jpg"
   },
   {
     "title": "The Handmaid's Tale",
@@ -125,7 +137,8 @@
       "Dystopian",
       "Science Fiction"
     ],
-    "year": 1985
+    "year": 1985,
+    "cover_url": "the_handmaid's_tale.jpg"
   },
   {
     "title": "The Night Circus",
@@ -135,7 +148,8 @@
     "genres": [
       "Fantasy"
     ],
-    "year": 2011
+    "year": 2011,
+    "cover_url": "the_night_circus.jpg"
   },
   {
     "title": "Brave New World",
@@ -147,7 +161,8 @@
       "Science Fiction",
       "Classics"
     ],
-    "year": 1932
+    "year": 1932,
+    "cover_url": "brave_new_world.jpg"
   },
   {
     "title": "The Picture of Dorian Gray",
@@ -158,7 +173,8 @@
       "Classics",
       "Gothic"
     ],
-    "year": 1890
+    "year": 1890,
+    "cover_url": "the_picture_of_dorian_gray.jpg"
   },
   {
     "title": "Neuromancer",
@@ -169,7 +185,8 @@
       "Science Fiction",
       "Cyberpunk"
     ],
-    "year": 1984
+    "year": 1984,
+    "cover_url": "neuromancer.jpg"
   },
   {
     "title": "The Road",
@@ -179,7 +196,8 @@
     "genres": [
       "Post-Apocalyptic"
     ],
-    "year": 2006
+    "year": 2006,
+    "cover_url": "the_road.jpg"
   },
   {
     "title": "The Name of the Rose",
@@ -190,7 +208,8 @@
       "Historical Fiction",
       "Mystery"
     ],
-    "year": 1980
+    "year": 1980,
+    "cover_url": "the_name_of_the_rose.jpg"
   },
   {
     "title": "American Gods",
@@ -201,7 +220,8 @@
       "Fantasy",
       "Mythology"
     ],
-    "year": 2001
+    "year": 2001,
+    "cover_url": "american_gods.jpg"
   },
   {
     "title": "The Kite Runner",
@@ -212,7 +232,8 @@
       "Historical Fiction",
       "Drama"
     ],
-    "year": 2003
+    "year": 2003,
+    "cover_url": "the_kite_runner.jpg"
   },
   {
     "title": "The Shadow of the Wind",
@@ -223,7 +244,8 @@
       "Historical Fiction",
       "Mystery"
     ],
-    "year": 2001
+    "year": 2001,
+    "cover_url": "the_shadow_of_the_wind.jpg"
   },
   {
     "title": "Mistborn: The Final Empire",
@@ -233,7 +255,8 @@
     "genres": [
       "Fantasy"
     ],
-    "year": 2006
+    "year": 2006,
+    "cover_url": "mistborn.jpg"
   },
   {
     "title": "Blindness",
@@ -244,6 +267,7 @@
       "Dystopian",
       "Literary Fiction"
     ],
-    "year": 1995
+    "year": 1995,
+    "cover_url": "blindness.jpg"
   }
 ]

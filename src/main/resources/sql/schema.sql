@@ -4,7 +4,6 @@ CREATE SCHEMA IF NOT EXISTS BookStore;
 USE BookStore;
 
 -- Drop tables if they exist
-DROP TABLE IF EXISTS followers;
 DROP TABLE IF EXISTS recommendations;
 DROP TABLE IF EXISTS favorites;
 DROP TABLE IF EXISTS book_genres;
@@ -12,6 +11,7 @@ DROP TABLE IF EXISTS ratings;
 DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS authors;
+DROP TABLE IF EXISTS follows;
 DROP TABLE IF EXISTS users;
 
 -- Create User Table
@@ -81,7 +81,7 @@ CREATE TABLE recommendations
     FOREIGN KEY (book_id) REFERENCES books (book_id)
 );
 
-CREATE TABLE followers
+CREATE TABLE follows
 (
     follower_id  INT NOT NULL,
     following_id INT NOT NULL,
@@ -99,5 +99,14 @@ CREATE TABLE reviews
     rating_value INT,
     review_text  TEXT,
     FOREIGN KEY (book_id) REFERENCES books (book_id),
+    FOREIGN KEY (user_id) REFERENCES users (user_id)
+);
+
+CREATE TABLE user_posts
+(
+    post_id      INT PRIMARY KEY AUTO_INCREMENT,
+    user_id      INT,
+    content      TEXT,
+    date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
