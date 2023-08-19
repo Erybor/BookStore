@@ -15,8 +15,7 @@ public class BookDAO {
 
     public void addBook(Book book) {
         try {
-            PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO books (title, author, author_id, description, rating, year, cover_url) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO books (title, author, author_id, description, rating, year, cover_url) VALUES (?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, book.getTitle());
             statement.setString(2, book.getAuthor());
             statement.setInt(3, book.getAuthorId());
@@ -40,8 +39,7 @@ public class BookDAO {
             int bookID = resultSet.getInt(1);
 
             for (String genre : genres) {
-                statement = connection.prepareStatement(
-                        "INSERT INTO book_genres (book_id, genre) VALUES (?, ?)");
+                statement = connection.prepareStatement("INSERT INTO book_genres (book_id, genre) VALUES (?, ?)");
                 statement.setInt(1, bookID);
                 statement.setString(2, genre);
 
@@ -88,8 +86,7 @@ public class BookDAO {
 
     private List<String> getBookGenres(int bookID) throws SQLException {
 
-        PreparedStatement preparedStatement = connection.prepareStatement(
-                "SELECT genre FROM book_genres WHERE book_id = ?");
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT genre FROM book_genres WHERE book_id = ?");
         preparedStatement.setInt(1, bookID);
 
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -148,8 +145,7 @@ public class BookDAO {
             List<List<Book>> booksByCategories = new ArrayList<>();
 
             for (String category : categories) {
-                PreparedStatement statement = connection.prepareStatement(
-                        "SELECT book_id FROM book_genres WHERE genre = ?");
+                PreparedStatement statement = connection.prepareStatement("SELECT book_id FROM book_genres WHERE genre = ?");
                 statement.setString(1, category);
 
                 ResultSet resultSet = statement.executeQuery();
@@ -229,8 +225,7 @@ public class BookDAO {
     }
 
     public Book findBook(String title) {
-        try (PreparedStatement statement = connection.prepareStatement(
-                "SELECT * FROM books WHERE title = ?")) {
+        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM books WHERE title = ?")) {
             statement.setString(1, title);
 
             ResultSet resultSet = statement.executeQuery();
@@ -253,8 +248,7 @@ public class BookDAO {
     }
 
     public Book getBookById(int id) {
-        try (PreparedStatement statement = connection.prepareStatement(
-                "SELECT * FROM books WHERE book_id = ?")) {
+        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM books WHERE book_id = ?")) {
             statement.setInt(1, id);
 
             ResultSet resultSet = statement.executeQuery();
@@ -282,8 +276,7 @@ public class BookDAO {
     public List<Book> getBooksByAuthor(int authorId) {
         List<Book> books = new ArrayList<>();
 
-        try (PreparedStatement statement = connection.prepareStatement(
-                "SELECT * FROM books WHERE author_id = ?")) {
+        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM books WHERE author_id = ?")) {
             statement.setInt(1, authorId);
 
             ResultSet resultSet = statement.executeQuery();
@@ -305,5 +298,43 @@ public class BookDAO {
         }
         return books;
     }
+
+    public Book getBookByReview(int reviewId) {
+        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM books WHERE book_id = (SELECT book_id FROM reviews WHERE review_id = ?)")) {
+            statement.setInt(1, reviewId);
+
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                int id = resultSet.getInt("book_id");
+                String title = resultSet.getString("title");
+                String author = resultSet.getString("author");
+                int authorId = resultSet.getInt("author_id");
+                String description = resultSet.getString("description");
+                double rating = resultSet.getDouble("rating");
+                int year = resultSet.getInt("year");
+                String coverUrl = resultSet.getString("cover_url");
+                List<String> genres = getBookGenres(id);
+
+                // Create and return a Book object
+                return new Book(id, title, author, authorId, description, rating, genres, year, coverUrl);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void updateBookRating(int bookId, double rating) {
+        try (PreparedStatement statement = connection.prepareStatement("UPDATE books SET rating=? WHERE book_id=?")) {
+            statement.setDouble(1, rating);
+            statement.setInt(2, bookId);
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 }

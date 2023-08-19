@@ -7,8 +7,8 @@ body {
 
 .main_content {
     background-color: #476754;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1200px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the container horizontally */
     height: 100vh;
     margin-top: 6rem;
     display: flex;
@@ -18,6 +18,7 @@ body {
     width: 70%;
     /*justify-content: space-between;*/
 }
+
 .genres {
     gap: 30px;
     margin: 0 auto;
@@ -27,6 +28,10 @@ body {
     color: #476754 !important;
 }
 
+.cover_row {
+    margin-top: 0.7rem;
+}
+
 .left_div, .right_div {
     /*margin: 0;*/
     margin-top: 2rem;
@@ -34,16 +39,12 @@ body {
 
 .left_div {
     /*margin-top: 2rem;*/
-    flex-basis: 22%;
+    flex-basis: 55%;
     flex-shrink: 0;
     /*justify-content: space-between;*/
 }
 
-/*.left_div.h1 {*/
-/*    color: red !important;*/
-/*}*/
-
-.author_cover {
+.book_cover {
     margin-bottom: 10px; /* Add a bottom margin to create spacing between book covers */
 }
 
@@ -52,6 +53,7 @@ body {
     display: flex; /* Apply flexbox layout */
     justify-content: flex-start; /* Align items from the start */
     gap: 1rem; /* Adjust the gap between items */
+    flex-wrap: wrap;
 }
 
 .entered-genres {
@@ -64,6 +66,10 @@ body {
     padding: 5px 10px;
     background-color: #f8e192;
     border-radius: 5px;
+}
+
+#genreOptions {
+    margin-bottom: 2rem;
 }
 
 .genreOption {
@@ -87,30 +93,18 @@ body {
     color: #fff;
 }
 
-/* Author stuff */
-
-.author_title h1 {
-    margin: 0;
+/* Remove bullet points from the list */
+.genre-list {
+    list-style: none;
     padding: 0;
 }
 
-.author_books {
-    margin-top: 12rem;
+/* Display list items inline */
+.genre-list li {
+    display: inline;
+    /*margin-right: ; !* Add spacing between genres *!*/
 }
 
-. book_link {
-    color: #f8e192;
-}
-
-a, a:visited, a:active {
+a, a:visited, a:hover, a:active {
     color: inherit;
 }
-
-a:hover {
-    color: #ffe151;
-}
-
-/*a:link { text-decoration: none; }*/
-/*a:visited { text-decoration: none; }*/
-/*a:hover { text-decoration: none; }*/
-/*a:active { text-decoration: none; }*/

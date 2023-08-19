@@ -94,43 +94,5 @@ body {
     color: #fff;
 }
 
-/* NAVIGATION BAR CSS: */
 
-.topnav {
-    overflow: hidden;
-    background-color: #476754;
-}
-
-.topnav a {
-    float: left;
-    color: #f8e192;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 18px;
-    font-family: Inter;
-}
-
-.test {
-    max-width: 1200px; /* Adjust the maximum width as needed */
-    margin: 0 auto; /* Center the container horizontally */
-    display: flex;
-    /*justify-content: space-between;*/
-
-}
-
-.left_nav {
-    display: flex;
-    /*gap: 30px;*/
-}
-
-.middle_nav {
-    /*margin: 0 auto;*/
-    margin-left: 5rem;
-}
-
-.right_nav {
-    margin-left: auto;
-
-}
 

@@ -125,7 +125,8 @@
         <div class="book_reviews">
             <h3>Reviews</h3>
             <c:forEach var="review" items="${reviews}">
-                <c:set var="user" value="${userDAO.getUserByID(review.userId)}"/>
+                <c:set var="user" value="${userDAO.getUserById(review.userId)}"/>
+
 
                 <div class="review-box">
                     <div class="user-info">
@@ -133,8 +134,19 @@
                         <a href="/user/${review.userId}" class="user-link">${user.username}</a>
                     </div>
                     <div class="review-content">
-                        <p class="review-rating">Rating: ${review.ratingValue}</p>
+                        <div class="review-top-content">
+                            <p class="review-rating">Rating: ${review.ratingValue}</p>
+                            <c:if test="${review.userId == sessionScope.userId}">
+                                <div class="edit-review">
+                                    <button class="edit-review-button">
+                                        <a href="/review/${review.reviewId}?bookId=${book.id}">Edit</a>
+                                    </button>
+                                </div>
+                            </c:if>
+                        </div>
                         <p class="review-text">${review.reviewText}</p>
+
+                            <%--Show edit button if the review was written by current user--%>
                     </div>
                 </div>
             </c:forEach>
