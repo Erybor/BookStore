@@ -25,10 +25,10 @@ public class DisplayReviewServlet extends HttpServlet {
 
         ReviewDAO reviewDAO = (ReviewDAO) req.getServletContext().getAttribute("reviewDAO");
         BookDAO bookDAO = (BookDAO) req.getServletContext().getAttribute("bookDAO");
-
         int userId = (int) req.getSession().getAttribute("userId");
-        int bookId = Integer.parseInt(req.getParameter("bookId"));
-        Review review = reviewDAO.getUserReviewForBook(userId, bookId);
+
+        Review review = reviewDAO.getReviewById(Integer.parseInt(reviewId));
+//        int bookId = Integer.parseInt(req.getParameter("bookId"));
         System.out.println("REVIEW:" + review);
 
         int reviewUserId = review.getUserId();
@@ -43,10 +43,12 @@ public class DisplayReviewServlet extends HttpServlet {
 
 
         System.out.println("REVIEW ID:" + reviewId);
-        Book book = bookDAO.getBookById(bookId);
+        Book book = bookDAO.getBookById(review.getBookId());
 
+        req.setAttribute("reviewId", reviewId);
         req.setAttribute("review", review);
         req.setAttribute("book", book);
+
 
         req.getRequestDispatcher("/editReview.jsp").forward(req, resp);
 

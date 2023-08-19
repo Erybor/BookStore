@@ -30,12 +30,12 @@ public class EditReviewServlet extends HttpServlet {
         BookDAO bookDAO = (BookDAO) req.getServletContext().getAttribute("bookDAO");
 
         int reviewId = Integer.parseInt(req.getParameter("reviewId"));
-        int bookId = Integer.parseInt(req.getParameter("bookId"));
         int newRating = Integer.parseInt(req.getParameter("rating")); // New rating from the edited review
 
         Review oldReview = reviewDAO.getReviewById(reviewId);
-        int oldRating = oldReview.getRatingValue(); // Old rating from the original review
+        int bookId = oldReview.getBookId();
 
+        int oldRating = oldReview.getRatingValue(); // Old rating from the original review
         int reviewUserId = oldReview.getUserId();
         int currUserId = (int) req.getSession().getAttribute("userId");
 
