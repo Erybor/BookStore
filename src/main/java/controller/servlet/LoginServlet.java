@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet {
         req.getSession().setAttribute("username", user.getUsername());
 
         // TODO Add more info attributes in session later on.
-        System.out.println("USER ID: " + req.getSession().getAttribute("userId"));
+        System.out.println("USER ID FROM SESSION: " + req.getSession().getAttribute("userId"));
 
         resp.sendRedirect("/homepage");
 

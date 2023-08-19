@@ -68,7 +68,7 @@ public class CatalogueServlet extends HttpServlet {
         req.setAttribute("genreListInput", str);
 
         // Forward the request to the JSP for rendering
-        req.getRequestDispatcher("catalogue.jsp").forward(req, resp);
+        req.getRequestDispatcher("/catalogue.jsp").forward(req, resp);
     }
 
 

@@ -22,8 +22,15 @@ public class SearchGenreServlet extends HttpServlet {
         String[] genres = req.getParameter("genre").split(",");
 
         req.setAttribute("filteredBooks", bookDAO.getBooksByCategories(List.of(genres)));
+        if (bookDAO.getBooksByCategories(List.of(genres)).isEmpty())
+            System.out.println("No books found for this genre");
+//            req.setAttribute("noBooks", "No books found for this genre");
 
-        req.getRequestDispatcher("genre.jsp").forward(req, resp);
+        req.setAttribute("genres", Arrays.asList(genres));
+
+        System.out.println("FILTERED BOOKS:" + bookDAO.getBooksByCategories(List.of(genres)));
+
+        req.getRequestDispatcher("/genre.jsp").forward(req, resp);
     }
 
     @Override
