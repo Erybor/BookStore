@@ -1,7 +1,9 @@
 package controller.servlet;
 
 
+import dao.BookDAO;
 import dao.ReviewDAO;
+import model.Book;
 import model.Review;
 
 import javax.servlet.ServletException;
@@ -24,14 +26,19 @@ public class AddReviewServlet extends HttpServlet {
         String reviewText = req.getParameter("review");
         int ratingValue = Integer.parseInt(req.getParameter("rating"));
 
+
+        BookDAO bookDAO = (BookDAO) req.getServletContext().getAttribute("bookDAO");
+        Book book = bookDAO.getBookById(bookId);
+
         ReviewDAO reviewDAO = (ReviewDAO) req.getServletContext().getAttribute("reviewDAO");
+        Review review = reviewDAO.getUserReviewForBook(userId, bookId);
 
         List<Review> reviews = reviewDAO.getReviewsForBook(bookId);
+
         req.setAttribute("reviews", reviews);
         req.setAttribute("bookId", bookId);
 
         // Check if the user has already reviewed this book
-        Review review = reviewDAO.getUserReviewForBook(userId, bookId);
 
         // Don't allow the user to review the same book twice
         if (review != null) {
@@ -41,10 +48,17 @@ public class AddReviewServlet extends HttpServlet {
             req.getSession().setAttribute("reviewId", review.getReviewId());
 //            req.setAttribute("reviewError", true);,
             resp.sendRedirect("/book/" + bookId);
-
-//            req.getRequestDispatcher("/book/" + bookId).forward(req, resp);
             return;
         }
+
+
+        // Update Book Rating
+        int reviewCount = reviewDAO.getReviewCountForBook(bookId);
+        double bookRating = book.getRating();
+        double newBookRating = ((bookRating * reviewCount) + ratingValue) / (reviewCount + 1);
+
+        bookDAO.updateBookRating(bookId, newBookRating);
+
 
         review = new Review(userId, bookId, reviewText, ratingValue);
 
