@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f8e192;
+    color: #f8e192;
+}
+
+.main_content {
+    background-color: #476754;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100vh;
+    margin-top: 6rem;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 16px;
+    box-sizing: border-box;
+    width: 70%;
+    /*justify-content: space-between;*/
+}
+
+.genres {
+    gap: 30px;
+    margin: 0 auto;
+}
+
+.genre_div {
+    color: #476754 !important;
+}
+
+.left_div, .right_div {
+    /*margin: 0;*/
+    margin-top: 2rem;
+}
+
+.left_div {
+    /*margin-top: 2rem;*/
+    flex-basis: 40%;
+    flex-shrink: 0;
+    /*justify-content: space-between;*/
+}
+
+/*.left_div.h1 {*/
+/*    color: red !important;*/
+/*}*/
+
+.author_cover {
+    margin-bottom: 10px; /* Add a bottom margin to create spacing between book covers */
+}
+
+
+.cover_row {
+    display: flex; /* Apply flexbox layout */
+    justify-content: flex-start; /* Align items from the start */
+    gap: 1rem; /* Adjust the gap between items */
+}
+
+.entered-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.entered-genres span {
+    padding: 5px 10px;
+    background-color: #f8e192;
+    border-radius: 5px;
+}
+
+.genreOption {
+    display: inline-block;
+    padding: 8px 16px;
+    /*margin: 4px;*/
+    font-size: 14px;
+    background-color: #f8e192;
+    border: 1px solid #f8e192;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #476754 !important;
+}
+
+.genreOption:hover {
+    background-color: #e0e0e0;
+}
+
+.selectedGenre {
+    background-color: #007bff;
+    color: #fff;
+}
+
+
+/* Follower Stuff */
+
+.followers {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+a, a:visited, a:active {
+    color: inherit;
+}
+
+
+a:hover {
+    color: #ffe151;
+}

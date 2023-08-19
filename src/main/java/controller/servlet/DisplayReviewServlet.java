@@ -21,15 +21,28 @@ public class DisplayReviewServlet extends HttpServlet {
 
         String requestURI = req.getRequestURI();
         String reviewId = requestURI.substring(requestURI.lastIndexOf("/") + 1);
+        System.out.println("REVIEW ID:" + reviewId);
+
         ReviewDAO reviewDAO = (ReviewDAO) req.getServletContext().getAttribute("reviewDAO");
         BookDAO bookDAO = (BookDAO) req.getServletContext().getAttribute("bookDAO");
 
         int userId = (int) req.getSession().getAttribute("userId");
         int bookId = Integer.parseInt(req.getParameter("bookId"));
+        Review review = reviewDAO.getUserReviewForBook(userId, bookId);
+        System.out.println("REVIEW:" + review);
+
+        int reviewUserId = review.getUserId();
+
+        // Add checks to make sure the user is authorized to edit the review
+        // Check if the user is the owner of the review
+
+        if (reviewUserId != userId) {
+            resp.sendError(403, "You are not authorized to edit this review");
+            return;
+        }
 
 
         System.out.println("REVIEW ID:" + reviewId);
-        Review review = reviewDAO.getUserReviewForBook(userId, bookId);
         Book book = bookDAO.getBookById(bookId);
 
         req.setAttribute("review", review);
