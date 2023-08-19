@@ -26,7 +26,7 @@
 
         <div class="middle_nav">
             <a href="/catalogue">Catalogue</a>
-            <a href="#profile_page">Profile Page</a>
+            <a href="/profile">Profile Page</a>
         </div>
 
         <div class="right_nav">

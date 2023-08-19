@@ -20,10 +20,18 @@ public class ContextListener implements ServletContextListener {
 
         UserDAO userDAO = new UserDAO(conn);
         BookDAO bookDAO = new BookDAO(conn);
+        AuthorDAO authorDAO = new AuthorDAO(conn);
+        ReviewDAO reviewDAO = new ReviewDAO(conn);
+        FollowerDAO followerDAO = new FollowerDAO(conn);
+
         System.out.println("USER DAOO:" + userDAO);
         ServletContext sc = servletContextEvent.getServletContext();
         sc.setAttribute("userDAO", userDAO);
         sc.setAttribute("bookDAO", bookDAO);
+        sc.setAttribute("authorDAO", authorDAO);
+        sc.setAttribute("reviewDAO", reviewDAO);
+        sc.setAttribute("followerDAO", followerDAO);
+
     }
 
     @Override

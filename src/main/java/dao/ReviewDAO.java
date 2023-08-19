@@ -104,4 +104,39 @@ public class ReviewDAO {
         }
         return null;
     }
+
+    public List<Review> getReviewsForUser(int userId) {
+        try {
+            String sql = "SELECT * FROM reviews WHERE user_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            List<Review> reviews = new ArrayList<>();
+            while (resultSet.next()) {
+                Review review = extractReviewFromResultSet(resultSet);
+                reviews.add(review);
+            }
+            return reviews;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public int getReviewCountForBook(int bookId) {
+        try {
+            String sql = "SELECT COUNT(*) FROM reviews WHERE book_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, bookId);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
 }

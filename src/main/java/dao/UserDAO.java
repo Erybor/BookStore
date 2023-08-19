@@ -70,7 +70,7 @@ public class UserDAO {
         return null;
     }
 
-    public User getUserByID(int userID) {
+    public User getUserById(int userID) {
         try {
             String sql = "SELECT * FROM users WHERE user_id = ?";
 
