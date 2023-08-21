@@ -24,8 +24,6 @@ public class PasswordValidator implements Validator {
         errors = new ArrayList<>();
     }
 
-
-    // TODO PasswordValidator should not be using EmptyInputErrors.
     @Override
     public boolean validate() {
         if (password.length() < PASSWORD_MIN_LENGTH) {

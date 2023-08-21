@@ -12,7 +12,6 @@ public class UniquenessValidator implements Validator {
     private final String username;
     UserDAO userDAO;
 
-
     private List<ValidationError> errors;
 
     public UniquenessValidator(String username, UserDAO userDAO) {
@@ -25,7 +24,7 @@ public class UniquenessValidator implements Validator {
     @Override
     public boolean validate() {
         if (userDAO.getUser(username) != null) {
-            errors.add(new ValidationError(ValidationField.USERNAME,"The username is already taken"));
+            errors.add(new ValidationError(ValidationField.USERNAME, "The username is already taken"));
         }
         return errors.isEmpty();
 

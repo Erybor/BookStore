@@ -3,19 +3,66 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
-  <servlet>
-    <servlet-name>CatalogueServlet</servlet-name>
-    <servlet-class>controller.servlet.CatalogueServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CatalogueServlet</servlet-name>
-    <url-pattern>/catalogue</url-pattern>
-  </servlet-mapping>
+    <display-name>Archetype Created Web Application</display-name>
+
+    <filter>
+        <filter-name>AuthorizationFilter</filter-name>
+        <filter-class>filter.AuthorizationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AuthorizationFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+<!--        <dispatcher>REQUEST</dispatcher>-->
+<!--        <dispatcher>FORWARD</dispatcher> &lt;!&ndash; Add FORWARD dispatcher &ndash;&gt;-->
+    </filter-mapping>
 
 
-  <welcome-file-list>
-    <welcome-file>homepage.jsp</welcome-file>
-  </welcome-file-list>
+    <servlet>
+        <servlet-name>CatalogueServlet</servlet-name>
+        <servlet-class>controller.servlet.CatalogueServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CatalogueServlet</servlet-name>
+        <url-pattern>/catalogue</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>login</servlet-name>
+        <jsp-file>/login.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>register</servlet-name>
+        <jsp-file>/register.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>register</servlet-name>
+        <url-pattern>/Register</url-pattern>
+    </servlet-mapping>
+
+
+
+
+
+<!--    <filter>-->
+<!--        <filter-name>authorizationFilter</filter-name>-->
+<!--        <filter-class>filter.AuthorizationFilter</filter-class>-->
+<!--    </filter>-->
+<!--    <filter-mapping>-->
+<!--        <filter-name>authorizationFilter</filter-name>-->
+<!--        <url-pattern>/servlet1</url-pattern>-->
+<!--    </filter-mapping>-->
+
+    <welcome-file-list>
+        <welcome-file>welcomePage.jsp</welcome-file>
+    </welcome-file-list>
+
+
+
 
 </web-app>

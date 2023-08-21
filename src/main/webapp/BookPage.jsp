@@ -49,9 +49,7 @@
 
     <div class="left_div">
         <div class="book_cover">
-            <%--            <img src="${pageContext.request.contextPath}/book.png" width="208" height="312"/>--%>
             <img src="${pageContext.request.contextPath}/${book.coverUrl}" width="208" height="312"/>
-
         </div>
     </div>
     <div class="right_div">
@@ -60,20 +58,20 @@
         </div>
 
         <div class="book_rating">
-            <p> ${book.rating} </p>
-            <div class="stars">
-                <i class="fa-star"></i>
-                <i class=" fa-star"></i>
-                <i class="fa-star"></i>
-                <i class="fa-star"></i>
-                <i class="fa-star"></i>
-            </div>
+            <p> Rating: ${book.rating} </p>
+            <%--            <div class="stars">--%>
+            <%--                <i class="fa-star"></i>--%>
+            <%--                <i class=" fa-star"></i>--%>
+            <%--                <i class="fa-star"></i>--%>
+            <%--                <i class="fa-star"></i>--%>
+            <%--                <i class="fa-star"></i>--%>
+            <%--            </div>--%>
 
         </div>
 
         <div class="book_author_name">
             <a class="author_link" href="/author/${book.authorId}">
-                <h2> ${book.author} </h2>
+                <h2 class="author-name"> ${book.author} </h2>
             </a>
         </div>
 
@@ -81,9 +79,17 @@
             <p> ${book.description} </p>
         </div>
 
-        <div class="book_genres_list">
-            <p> Genres: ${book.genres} </p>
+
+        <div class="book-genres-list">
+            <span>Genres: </span>
+
+            <c:forEach var="genre" items="${book.genres}">
+                <a href="/genre/${genre}">${genre},</a>
+            </c:forEach>
+
         </div>
+
+
 
         <div class="add_review">
             <h3>Write a Review</h3>
@@ -92,6 +98,7 @@
                 <textarea name="review" rows="4" cols="50" placeholder="Write your review"></textarea>
                 <br>
                 <label for="rating">Rating:</label>
+
                 <input type="number" id="rating" name="rating" min="1" max="5">
                 <br>
                 <div class="submit_review_button">
@@ -107,7 +114,6 @@
 
                     <p> You have already reviewed this book, please edit your review instead! </p>
                     <form action="/review/${reviewId}" method="get">
-                        <input type="hidden" name="bookId" value="${bookId}">
                         <input type="submit" value="Edit Review">
                     </form>
 
@@ -120,7 +126,6 @@
         <%--        // Save user in a JSTL variable--%>
 
         <c:set var="userDAO" value="${applicationScope.userDAO}"/>
-
         <%--        <c:set var="user" value="${applicationScope.userDAO}"/>--%>
         <div class="book_reviews">
             <h3>Reviews</h3>
@@ -139,7 +144,7 @@
                             <c:if test="${review.userId == sessionScope.userId}">
                                 <div class="edit-review">
                                     <button class="edit-review-button">
-                                        <a href="/review/${review.reviewId}?bookId=${book.id}">Edit</a>
+                                        <a href="/review/${review.reviewId}">Edit</a>
                                     </button>
                                 </div>
                             </c:if>
@@ -156,6 +161,13 @@
 </div>
 
 </div>
+
+<script>
+    var genre = document.getElementsByClassName("book-genres-list")[0];
+    var a_tags = genre.getElementsByTagName("a");
+    var last_a_tag = a_tags[a_tags.length - 1];
+    last_a_tag.innerHTML = last_a_tag.innerHTML.slice(0, -1);
+</script>
 
 </body>
 </html>

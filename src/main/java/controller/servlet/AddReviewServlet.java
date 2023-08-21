@@ -26,12 +26,19 @@ public class AddReviewServlet extends HttpServlet {
         String reviewText = req.getParameter("review");
         int ratingValue = Integer.parseInt(req.getParameter("rating"));
 
+        // check that ratingValue is between 1 and 5
+        if (ratingValue < 1 || ratingValue > 5) {
+            req.getSession().setAttribute("ratingError", "Please enter a rating between 1 and 5");
+            resp.sendRedirect("/book/" + bookId);
+            return;
+        }
 
         BookDAO bookDAO = (BookDAO) req.getServletContext().getAttribute("bookDAO");
         Book book = bookDAO.getBookById(bookId);
 
         ReviewDAO reviewDAO = (ReviewDAO) req.getServletContext().getAttribute("reviewDAO");
         Review review = reviewDAO.getUserReviewForBook(userId, bookId);
+
 
         List<Review> reviews = reviewDAO.getReviewsForBook(bookId);
 

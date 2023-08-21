@@ -42,6 +42,16 @@ public class ConnectionManager {
         return null;
     }
 
+
+//    public static void closeConnection(Connection connection) {
+//        try {
+//            connection.close();
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//    }
+
+
     private static Properties loadProperties() throws IOException {
         Properties props = new Properties();
         FileInputStream fis = new FileInputStream("src/main/resources/database.properties");

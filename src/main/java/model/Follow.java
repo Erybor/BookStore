@@ -13,16 +13,9 @@ public class Follow {
         return followerId;
     }
 
-    public void setFollowerId(int followerId) {
-        this.followerId = followerId;
-    }
 
     public int getFollowingId() {
         return followingId;
-    }
-
-    public void setFollowingId(int followingId) {
-        this.followingId = followingId;
     }
 
     @Override

@@ -19,13 +19,18 @@ public class AuthorDAO {
     public void addAuthor(Author author) {
         try {
             PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO authors (author_name, author_info) VALUES (?, ?)");
+                    "INSERT INTO authors (author_name, author_info) VALUES (?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
             statement.setString(1, author.getName());
             statement.setString(2, author.getInfo());
             statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+            ResultSet rs = statement.getGeneratedKeys();
+            if (rs.next()) {
+                int generatedAuthorId = rs.getInt(1);
+                author.setId(generatedAuthorId);
+            }
+
+        } catch (SQLException e) { e.printStackTrace(); }
     }
 
     public void updateAuthor(Author author) {
@@ -36,9 +41,7 @@ public class AuthorDAO {
             statement.setString(2, author.getInfo());
             statement.setInt(3, author.getId());
             statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
     }
 
     public void deleteAuthor(int id) {
@@ -46,9 +49,7 @@ public class AuthorDAO {
             PreparedStatement statement = connection.prepareStatement("DELETE FROM authors WHERE author_id=?");
             statement.setInt(1, id);
             statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
     }
 
     public List<Author> getAllAuthors() {
@@ -62,9 +63,7 @@ public class AuthorDAO {
                 String info = resultSet.getString("author_info");
                 authors.add(new Author(id, name, info));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
         return authors;
     }
 
@@ -78,9 +77,7 @@ public class AuthorDAO {
                 String info = resultSet.getString("author_info");
                 return new Author(id, name, info);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
         return null;
     }
 
@@ -96,9 +93,7 @@ public class AuthorDAO {
                 String info = resultSet.getString("author_info");
                 return new Author(id, authorName, info);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) {e.printStackTrace();}
         return null;
     }
 }

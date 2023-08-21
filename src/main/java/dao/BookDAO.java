@@ -15,7 +15,9 @@ public class BookDAO {
 
     public void addBook(Book book) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO books (title, author, author_id, description, rating, year, cover_url) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            String sql = "INSERT INTO books (title, author, author_id, description, rating, year, cover_url) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            // Specify that we want to retrieve generated keys
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, book.getTitle());
             statement.setString(2, book.getAuthor());
             statement.setInt(3, book.getAuthorId());
@@ -26,9 +28,15 @@ public class BookDAO {
             statement.executeUpdate();
 
             addBookGenres(book.getGenres());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+            // Set the generated ID to the book object
+            ResultSet rs = statement.getGeneratedKeys();
+            if (rs.next()) {
+                int generatedBookId = rs.getInt(1);
+                book.setId(generatedBookId);
+            }
+
+        } catch (SQLException e) { e.printStackTrace();}
     }
 
     private void addBookGenres(List<String> genres) {
@@ -45,9 +53,7 @@ public class BookDAO {
 
                 statement.executeUpdate();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace();}
 
     }
 
@@ -56,32 +62,7 @@ public class BookDAO {
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM book_genres WHERE book_id = ?");
             preparedStatement.setInt(1, bookID);
             preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public List<Book> getAllBooks() {
-        List<Book> books = new ArrayList<>();
-        try (Statement statement = connection.createStatement()) {
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM books");
-            while (resultSet.next()) {
-                int id = resultSet.getInt("book_id");
-                String title = resultSet.getString("title");
-                int authorId = resultSet.getInt("author_id");
-                String author = resultSet.getString("author");
-                String description = resultSet.getString("description");
-                double rating = resultSet.getDouble("rating");
-                int year = resultSet.getInt("year");
-                String coverUrl = resultSet.getString("cover_url");
-                List<String> genres = getBookGenres(id);
-
-                books.add(new Book(id, title, author, authorId, description, rating, genres, year, coverUrl));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return books;
+        } catch (SQLException e) { e.printStackTrace(); }
     }
 
     private List<String> getBookGenres(int bookID) throws SQLException {
@@ -98,41 +79,6 @@ public class BookDAO {
         }
 
         return genres;
-    }
-
-    public void updateBook(Book book) {
-        try (PreparedStatement statement = connection.prepareStatement(
-//                title=?, author_id=?, description=?, rating=?, year=?, cover_url=?
-                "UPDATE books SET title=?, author_id=?, description=?, rating=?, year=?, cover_url=? WHERE book_id=?")) {
-            statement.setString(1, book.getTitle());
-            statement.setInt(2, book.getAuthorId());
-            statement.setString(3, book.getDescription());
-            statement.setDouble(4, book.getRating());
-            statement.setInt(6, book.getYear());
-            statement.setInt(7, book.getId());
-
-            statement.executeUpdate();
-
-            deleteBookGenres(book.getId());
-            addBookGenres(book.getGenres());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private List<Book> getIntersection(List<Book> list1, List<Book> list2) {
-        if (list1.isEmpty()) {
-            return list2;
-        } // (Line 136 and 150) initially books list is empty
-
-        List<Book> intersection = new ArrayList<>();
-
-        for (Book book : list1) {
-            if (list2.contains(book)) {
-                intersection.add(book);
-            }
-        }
-        return intersection;
     }
 
     public List<Book> getBooksByCategory(String category) {
@@ -167,35 +113,9 @@ public class BookDAO {
                     books.retainAll(booksByCategories.get(i));
                 }
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
         return books;
     }
-
-//    public List<Book> getBooksByCategories(List<String> categories) {
-//        List<Book> books = new ArrayList<>();
-//        try {
-//            for (String category : categories) {
-//                PreparedStatement statement = connection.prepareStatement(
-//                        "SELECT book_id FROM book_genres WHERE genre = ?");
-//                statement.setString(1, category);
-//
-//                ResultSet resultSet = statement.executeQuery();
-//
-//                List<Book> currentBooks = new ArrayList<>();
-//
-//                while (resultSet.next()) {
-//                    currentBooks.add(getBookById(resultSet.getInt(1)));
-//                }
-//
-//                books = getIntersection(books, currentBooks);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return books;
-//    }
 
     public List<String> getAllCategories() {
         List<String> categories = new ArrayList<>();
@@ -205,9 +125,7 @@ public class BookDAO {
                 String category = resultSet.getString("genre");
                 categories.add(category);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace();}
         return categories;
     }
 
@@ -219,32 +137,7 @@ public class BookDAO {
             statement.executeUpdate();
 
             deleteBookGenres(id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public Book findBook(String title) {
-        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM books WHERE title = ?")) {
-            statement.setString(1, title);
-
-            ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                int id = resultSet.getInt("book_id");
-                int authorId = resultSet.getInt("author_id");
-                String author = resultSet.getString("author");
-                String description = resultSet.getString("description");
-                double rating = resultSet.getDouble("rating");
-                int year = resultSet.getInt("year");
-                String coverUrl = resultSet.getString("cover_url");
-                List<String> genres = getBookGenres(id);
-                // Create and return a Book object
-                return new Book(id, title, author, authorId, description, rating, genres, year, coverUrl);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
+        } catch (SQLException e) { e.printStackTrace(); }
     }
 
     public Book getBookById(int id) {
@@ -265,13 +158,9 @@ public class BookDAO {
                 // Create and return a Book object
                 return new Book(id, title, author, authorId, description, rating, genres, year, coverUrl);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
         return null;
     }
-
-    // TODO change this to use AuthorId
 
     public List<Book> getBooksByAuthor(int authorId) {
         List<Book> books = new ArrayList<>();
@@ -286,42 +175,14 @@ public class BookDAO {
                 String author = resultSet.getString("author");
                 String description = resultSet.getString("description");
                 double rating = resultSet.getDouble("rating");
-                // String genre = resultSet.getString("genre");
                 int year = resultSet.getInt("year");
                 String coverUrl = resultSet.getString("cover_url");
                 List<String> genres = getBookGenres(id);
                 Book book = new Book(id, title, author, authorId, description, rating, genres, year, coverUrl);
                 books.add(book);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
         return books;
-    }
-
-    public Book getBookByReview(int reviewId) {
-        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM books WHERE book_id = (SELECT book_id FROM reviews WHERE review_id = ?)")) {
-            statement.setInt(1, reviewId);
-
-            ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                int id = resultSet.getInt("book_id");
-                String title = resultSet.getString("title");
-                String author = resultSet.getString("author");
-                int authorId = resultSet.getInt("author_id");
-                String description = resultSet.getString("description");
-                double rating = resultSet.getDouble("rating");
-                int year = resultSet.getInt("year");
-                String coverUrl = resultSet.getString("cover_url");
-                List<String> genres = getBookGenres(id);
-
-                // Create and return a Book object
-                return new Book(id, title, author, authorId, description, rating, genres, year, coverUrl);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     public void updateBookRating(int bookId, double rating) {
@@ -330,10 +191,7 @@ public class BookDAO {
             statement.setInt(2, bookId);
             statement.executeUpdate();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
     }
-
 
 }

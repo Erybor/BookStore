@@ -55,18 +55,18 @@
 
             <form action="/EditReviewServlet" method="post">
                 <input type="hidden" name="reviewId" value="${reviewId}">
-                <input type="hidden" name="bookId" value="${book.id}">
 
-                <div class="review_rating" >
+                <div class="review_rating">
                     <label for="rating">Rating:</label>
-                    <input type="number" id="rating" name="rating" min="1" max="5" value="${review.ratingValue}" required>
+                    <input type="number" id="rating" name="rating" min="1" max="5" value="${review.ratingValue}"
+                           required>
                 </div>
 
                 <div class="review_text" style="padding: 2rem 0rem; display: flex; flex-direction: column">
                     <label for="reviewText" style="margin-bottom: 1rem">Review Text:</label>
-                    <textarea id="reviewText" name="reviewText" rows="4" cols="50" required>${review.reviewText}</textarea>
+                    <textarea id="reviewText" name="reviewText" rows="4" cols="50"
+                              required>${review.reviewText}</textarea>
                 </div>
-
 
 
                 <input type="submit" value="Save Changes">

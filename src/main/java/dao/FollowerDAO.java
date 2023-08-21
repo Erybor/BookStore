@@ -21,9 +21,7 @@ public class FollowerDAO {
             statement.setInt(1, follow.getFollowerId());
             statement.setInt(2, follow.getFollowingId());
             statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
     }
 
     public boolean isFollowing(int followerId, int followingId) {
@@ -31,9 +29,7 @@ public class FollowerDAO {
             statement.setInt(1, followerId);
             statement.setInt(2, followingId);
             return statement.executeQuery().next();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
         return false;
     }
 
@@ -42,9 +38,7 @@ public class FollowerDAO {
             statement.setInt(1, followerId);
             statement.setInt(2, followingId);
             statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
     }
 
     public List<Follow> getFollowers(int userId) {
@@ -58,9 +52,7 @@ public class FollowerDAO {
                 Follow follow = new Follow(followerId, followingId);
                 follows.add(follow);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
         return follows;
     }
 

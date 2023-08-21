@@ -88,6 +88,10 @@ body {
     color: #476754 !important;
 }
 
+a, a:visited, a:active {
+    color: inherit;
+}
+
 .genreOption:hover {
     background-color: #e0e0e0;
 }

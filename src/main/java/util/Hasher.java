@@ -20,9 +20,7 @@ public class Hasher {
             }
 
             return hexString.toString();
-        } catch (NoSuchAlgorithmException exception) {
-            exception.printStackTrace();
-        }
+        } catch (NoSuchAlgorithmException exception) {exception.printStackTrace();}
 
         return null;
     }

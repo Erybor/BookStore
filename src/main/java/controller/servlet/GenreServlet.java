@@ -22,6 +22,9 @@ public class GenreServlet extends HttpServlet {
         BookDAO bookDAO = (BookDAO) req.getServletContext().getAttribute("bookDAO");
         System.out.println("GENRE:" + genre);
 
+        // There are %20 s in the genre name, so we replace them with spaces
+        genre = genre.replace("%20", " ");
+
         req.setAttribute("genres", List.of(genre));
 
         // TODO BOOKS BY GENRE AND PROCESS HERE

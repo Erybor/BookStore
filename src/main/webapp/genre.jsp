@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/genre.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/navigation_bar.css">
 
-
 </head>
 
 <body>
@@ -42,8 +41,7 @@
             <%--            if the list is empty, then we have to display a message saying that no books were found--%>
             <c:if test="${empty filteredBooks}">
                 <p>No books found.</p>
-
-                <a href=""> Go Back </a>
+                <a href="/catalogue"> Go Back </a>
             </c:if>
         </div>
 
@@ -51,12 +49,12 @@
         <c:if test="${!empty filteredBooks}">
             <%--                <h2 class="header">List of books with genres: ${genres}</h2>--%>
             <h2 class="header">List of books with genres:</h2>
-            <ul class="genre-list">
+            <div class="genre-list">
                 <c:forEach var="genre" items="${genres}">
-                    <li><a href="/genre/${genre}">${genre}</a></li>
+                    <a href="/genre/${genre}">${genre},</a>
                 </c:forEach>
-            </ul>
 
+            </div>
 
             <div class="cover_row">
                 <c:forEach items="${filteredBooks}" var="book">
@@ -74,10 +72,16 @@
 
     </div>
     <div class="right_div">
-
-
     </div>
 </div>
+
+<script>
+    var genre = document.getElementsByClassName("genre-list")[0];
+    var a_tags = genre.getElementsByTagName("a");
+    var last_a_tag = a_tags[a_tags.length - 1];
+    last_a_tag.innerHTML = last_a_tag.innerHTML.slice(0, -1);
+</script>
+
 
 </body>
 </html>

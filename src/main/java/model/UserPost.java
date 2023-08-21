@@ -8,6 +8,7 @@ public class UserPost {
     private String content;
     private Timestamp dateCreated;
 
+    public UserPost() {}
 
     public UserPost(int userId, String content, Timestamp dateCreated) {
         this.userId = userId;
@@ -53,9 +54,6 @@ public class UserPost {
         return dateCreated;
     }
 
-    public void setDateCreated(Timestamp dateCreated) {
-        this.dateCreated = dateCreated;
-    }
 
     @Override
     public String toString() {

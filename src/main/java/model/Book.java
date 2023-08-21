@@ -16,18 +16,9 @@ public class Book {
     private List<Review> reviews;
 
 
-    // Constructor without AuthorId
+    public Book() {
+    }
 
-//    public Book(String title, String author, String description, double rating, List<String> genres, int year) {
-//        this.title = title;
-//        this.author = author;
-//        this.description = description;
-//        this.rating = rating;
-//        this.genres = genres;
-//        this.year = year;
-//    }
-
-    // Constructor with AuthorId
     public Book(String title, String author, int authorId, String description, double rating, List<String> genres, int year, String coverUrl) {
         this.title = title;
         this.author = author;
@@ -44,10 +35,6 @@ public class Book {
         this.id = id;
     }
 
-//    public Book(int id, String title, String author, String description, double rating, List<String> genres, int year) {
-//        this(title, author, description, rating, genres, year);
-//        this.id = id;
-//    }
 
     // Getters and Setters
     public int getId() {
@@ -146,6 +133,7 @@ public class Book {
                 ", rating=" + rating +
                 ", genres=" + genres +
                 ", year=" + year +
+                ", coverUrl='" + coverUrl + '\'' +
                 '}';
     }
 }

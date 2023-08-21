@@ -14,8 +14,6 @@ target/
 *.iml
 *.ipr
 pom.xml
-database.properties
-src/main/resources/sql/data.sql
 
 ### Eclipse ###
 .apt_generated

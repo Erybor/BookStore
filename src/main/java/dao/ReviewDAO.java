@@ -2,10 +2,7 @@ package dao;
 
 import model.Review;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,15 +17,22 @@ public class ReviewDAO {
     public void addReview(Review review) {
         try {
             String sql = "INSERT INTO reviews (user_id, book_id, review_text, rating_value) VALUES (?, ?, ?, ?)";
-            PreparedStatement statement = connection.prepareStatement(sql);
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, review.getUserId());
             statement.setInt(2, review.getBookId());
             statement.setString(3, review.getReviewText());
             statement.setInt(4, review.getRatingValue());
             statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            System.out.println("Review added successfully");
+            // Set the generated ID to the book object
+
+            ResultSet rs = statement.getGeneratedKeys();
+            if (rs.next()) {
+                int generatedReviewId = rs.getInt(1);
+                review.setReviewId(generatedReviewId);
+            }
+
+        } catch (SQLException e) { e.printStackTrace(); }
     }
 
     public List<Review> getReviewsForBook(int bookId) {
@@ -42,9 +46,7 @@ public class ReviewDAO {
                 Review review = extractReviewFromResultSet(resultSet);
                 reviews.add(review);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
         return reviews;
     }
 
@@ -58,9 +60,7 @@ public class ReviewDAO {
             if (resultSet.next()) {
                 return extractReviewFromResultSet(resultSet);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
         return null;
     }
 
@@ -83,10 +83,7 @@ public class ReviewDAO {
             statement.setInt(2, ratingValue);
             statement.setInt(3, reviewId);
             statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
 
     }
 
@@ -99,9 +96,7 @@ public class ReviewDAO {
             if (resultSet.next()) {
                 return extractReviewFromResultSet(resultSet);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
         return null;
     }
 
@@ -117,9 +112,7 @@ public class ReviewDAO {
                 reviews.add(review);
             }
             return reviews;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
         return null;
     }
 
@@ -132,11 +125,8 @@ public class ReviewDAO {
             if (resultSet.next()) {
                 return resultSet.getInt(1);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
         return 0;
     }
-
 
 }

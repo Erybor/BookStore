@@ -15,8 +15,7 @@ public class UserDAO {
         this.connection = connection;
     }
 
-    public int addUser(User user) {
-        int generatedUserId = -1;  // Initialize with a default value
+    public void addUser(User user) {
 
         try {
             String sql = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)";
@@ -25,30 +24,13 @@ public class UserDAO {
             statement.setString(2, Hasher.generateHash(user.getPassword()));
             statement.setString(3, user.getEmail());
             statement.executeUpdate();
-
             ResultSet generatedKeys = statement.getGeneratedKeys();
             if (generatedKeys.next()) {
-                generatedUserId = generatedKeys.getInt(1);
+                int generatedUserId = generatedKeys.getInt(1);
+                user.setUserId(generatedUserId);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace();}
 
-        return generatedUserId;
-    }
-
-    public void addUser(String username, String password, String email) {
-        try {
-            String sql = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, username);
-            statement.setString(2, Hasher.generateHash(password));
-            statement.setString(3, email);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
     }
 
     // Retrieve a user by username
@@ -63,10 +45,7 @@ public class UserDAO {
                 System.out.println(user);
                 return extractUserFromResultSet(resultSet);
             }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace();}
         return null;
     }
 
@@ -82,45 +61,8 @@ public class UserDAO {
                 System.out.println(user);
                 return user;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
         return null;
-    }
-
-    public List<User> getAllUsers() throws SQLException {
-        try {
-            String sql = "SELECT * FROM users";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet resultSet = statement.executeQuery();
-            List<User> users = new ArrayList<>();
-            while (resultSet.next()) {
-                User user = extractUserFromResultSet(resultSet);
-                users.add(user);
-            }
-            return users;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return Collections.emptyList();
-    }
-
-    public int getUserFollowers(int userID) throws SQLException {
-        try {
-            String sql = "SELECT u.* FROM users u INNER JOIN followers f ON u.user_id = f.follower_id WHERE f.following_id = ?";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, userID);
-            ResultSet resultSet = statement.executeQuery();
-            List<User> followers = new ArrayList<>();
-            while (resultSet.next()) {
-                User follower = extractUserFromResultSet(resultSet);
-                followers.add(follower);
-            }
-            return followers.size();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return 0;
     }
 
     private User extractUserFromResultSet(ResultSet resultSet) throws SQLException {
@@ -133,7 +75,6 @@ public class UserDAO {
         user.setLastName(resultSet.getString("last_name"));
         user.setGender(resultSet.getString("gender"));
         user.setProfilePicture(resultSet.getString("profile_picture"));
-
         return user;
     }
 
@@ -148,9 +89,6 @@ public class UserDAO {
             statement.setString(4, profilePicture);
             statement.setInt(5, userId);
             statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
     }
-
 }

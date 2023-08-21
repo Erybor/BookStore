@@ -61,9 +61,9 @@ public class RegisterServlet extends HttpServlet {
 
 //        userDAO.addUser(username, password, email)
 //        userDAO.addUser(user);
-        int generatedUserId = userDAO.addUser(user);
+        userDAO.addUser(user);
 
-        req.getSession().setAttribute("userId", generatedUserId);
+        req.getSession().setAttribute("userId", user.getId());
         req.getSession().setAttribute("username", user.getUsername());
 
 
