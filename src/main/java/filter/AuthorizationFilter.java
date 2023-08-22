@@ -64,8 +64,8 @@ public class AuthorizationFilter implements Filter {
         } else {
             // User is not authorized, redirect them to the login page or show an error page
             System.out.println("MEORE");
-//            response.sendRedirect("/Login");
-            response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+            request.getSession().setAttribute("authenticationError", "You must login first!");
+            response.sendRedirect("/Login");
         }
     }
 

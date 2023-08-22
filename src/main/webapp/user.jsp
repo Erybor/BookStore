@@ -21,7 +21,7 @@
     <div class="test">
         <div class="left_nav">
             <a class="book-verse" style="font-family: Inter" style="font-weight: bold"
-               href="welcomePage.jsp">BookVerse</a>
+               href="/homepage">BookVerse</a>
             <a class="home" href="/homepage">Home</a>
 
         </div>
@@ -38,10 +38,6 @@
     </div>
 </div>
 
-<%--<c:set var="userDAO" value="${applicationScope['userDAO']}"/>--%>
-<%--<c:set var="userId" value="${sessionScope.userId}"/>--%>
-
-<%--<c:set var="user" value="${userDAO.getUserByID(userId)}"/>--%>
 
 <div class="main_content">
     <div class="left_div">
@@ -80,7 +76,7 @@
     </div>
     <div class="right_div">
         <div class="user_name">
-            <h1> pepe ${user.username} </h1>
+            <h1> ${user.username} </h1>
         </div>
         <div class="user_info">
 

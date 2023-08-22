@@ -97,6 +97,8 @@ body {
 .genre-list {
     list-style: none;
     padding: 0;
+    color: #fccb5f !important;
+    font-size: 25px !important;
 }
 
 /* Display list items inline */
@@ -108,3 +110,4 @@ body {
 a, a:visited, a:hover, a:active {
     color: inherit;
 }
+

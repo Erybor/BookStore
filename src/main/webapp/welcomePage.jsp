@@ -44,7 +44,7 @@
 
         <p style="font-weight: bold">A Place to Explore, Discuss, and Celebrate the World of Books.</p>
 
-        <a class="join_click" href="register.jsp">JOIN NOW</a>
+        <a class="join_click" href="/Register">JOIN NOW</a>
 
     </div>
     <div class="right-div">

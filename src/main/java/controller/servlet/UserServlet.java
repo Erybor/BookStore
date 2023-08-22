@@ -32,11 +32,10 @@ public class UserServlet extends HttpServlet {
 
         int sessionUserId = Integer.parseInt(req.getSession().getAttribute("userId").toString());
 
-//        if (reqUserId == sessionUserId) {
-//            System.out.println("ITS THE SAME USER");
-//            resp.sendRedirect("/profile");
-//            return;
-//        }
+        if (reqUserId == sessionUserId) {
+            resp.sendRedirect("/profile");
+            return;
+        }
 
         List<Follow> follows = followerDAO.getFollowers(reqUserId);
 

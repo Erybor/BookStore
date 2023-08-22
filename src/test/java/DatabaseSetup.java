@@ -10,7 +10,6 @@ public class DatabaseSetup {
 
     public DatabaseSetup(Connection connection) {
         this.connection = connection;
-
     }
 
     public void setupDatabase() {
@@ -18,7 +17,6 @@ public class DatabaseSetup {
 
         assert connection != null;
         try (Statement statement = connection.createStatement()) {
-
             // Drop tables
 
             // Create schema and tables
@@ -28,7 +26,6 @@ public class DatabaseSetup {
             statement.execute("USE bookstoretest;");
 
             statement.execute("DROP TABLE IF EXISTS recommendations, favorites, book_genres, ratings, reviews, books, authors, follows, users, user_posts;");
-
 
             statement.execute(
                     "CREATE TABLE users (" +

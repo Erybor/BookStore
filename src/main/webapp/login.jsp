@@ -20,7 +20,10 @@
 
             <h1>Log in</h1>
 
-            <h6 class="login-error"><c:out value="${ErrorMessage}"/></h6>
+            <h6 class="login-error" style="color: darkred; font-size: 14px"><c:out value="${ErrorMessage}"/></h6>
+
+            <h6 class="login-error" style="color: darkred; font-size: 14px"><c:out value="${sessionScope.authenticationError}"/></h6>
+            <c:set var="authenticationError" value="" scope="session"/>
 
             <div class="input_container">
                 <label for="username">Your Username</label>

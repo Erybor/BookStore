@@ -1,26 +1,44 @@
+console.log("ENTERED RegisterValidator.js");
+
+console.log("FIRST");
+
 const minPassLength = 8;
+
 var checkPassword = function () {
-    if (document.getElementById('password').value ==
-        document.getElementById('passwordRepeat').value) {
-        document.getElementById('msg').innerHTML = '';
+    var passwordElement = document.getElementById('password');
+    var passwordRepeatElement = document.getElementById('passwordRepeat');
+    var msgElement = document.getElementById('msg');
+
+    if (passwordElement.value === passwordRepeatElement.value) {
+        msgElement.innerHTML = '';
     } else {
-        document.getElementById('msg').style.color = 'red';
-        document.getElementById('msg').innerHTML = 'Passwords don\'t match';
+        msgElement.style.color = 'red';
+        msgElement.innerHTML = 'Passwords don\'t match';
     }
 }
+
+console.log("SECOND");
+
+
 var check = function () {
-    var password = document.getElementById('password').value;
-    var rep_password = document.getElementById('passwordRepeat').value;
-    if (password != rep_password) {
+    var passwordElement = document.getElementById('password');
+    var passwordRepeatElement = document.getElementById('passwordRepeat');
+    var usernameElement = document.getElementById('username');
+
+    if (passwordElement.value !== passwordRepeatElement.value) {
+        alert('Passwords don\'t match');
         return false;
     }
-    if (document.getElementById('password').value.length < minPassLength) {
+
+    if (passwordElement.value.length < minPassLength) {
         alert("Password must contain at least " + minPassLength + " characters");
         return false;
     }
-    let username = document.getElementById('username').value;
-    if (username.charAt(0) >= '0' && username.charAt(0) <= '9') {
+
+    if (usernameElement.value.charAt(0) >= '0' && usernameElement.value.charAt(0) <= '9') {
         alert("Username can't start with a digit");
         return false;
     }
+
+    return true;
 }

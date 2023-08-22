@@ -16,13 +16,13 @@
     <div class="test">
         <div class="left_nav">
             <a class="book-verse" style="font-family: Inter" style="font-weight: bold"
-               href="welcomePage.jsp">BookVerse</a>
+               href="/homepage">BookVerse</a>
             <a class="home" href="/homepage">Home</a>
         </div>
 
         <div class="middle_nav">
             <a href="/catalogue">Catalogue</a>
-            <a href="#profile_page">Profile Page</a>
+            <a href="/profile">Profile Page</a>
         </div>
 
         <div class="right_nav">

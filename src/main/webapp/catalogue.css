@@ -76,7 +76,7 @@ body {
 .genreOption {
     display: inline-block;
     padding: 8px 16px;
-    /*margin: 4px;*/
+    margin: 4px 1px;
     font-size: 14px;
     background-color: #f8e192;
     border: 1px solid #f8e192;
@@ -85,14 +85,15 @@ body {
     color: #476754 !important;
 }
 
-.genreOption:hover {
-    background-color: #e0e0e0;
-}
-
 .selectedGenre {
-    background-color: #007bff;
+    background-color: #fccb5f;
     color: #fff;
 }
 
+
+.genre_div a {
+    color: #fccb5f !important;
+    font-size: 25px !important;
+}
 
 
